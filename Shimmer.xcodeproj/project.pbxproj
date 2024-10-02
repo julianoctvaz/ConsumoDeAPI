@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3A7BCA0B2CADD8B700FA5810 /* ShimmeringUiView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7BCA0A2CADD8B700FA5810 /* ShimmeringUiView */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3A7BC9F82CADD87600FA5810 /* Shimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7BCA0B2CADD8B700FA5810 /* ShimmeringUiView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = Shimmer;
 			packageProductDependencies = (
+				3A7BCA0A2CADD8B700FA5810 /* ShimmeringUiView */,
 			);
 			productName = Shimmer;
 			productReference = 3A7BC9F82CADD87600FA5810 /* Shimmer.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 3A7BC9EF2CADD87500FA5810;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3A7BCA092CADD8B700FA5810 /* XCRemoteSwiftPackageReference "swiftui-shimmeringview" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3A7BC9F92CADD87600FA5810 /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A7BCA092CADD8B700FA5810 /* XCRemoteSwiftPackageReference "swiftui-shimmeringview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ninise/swiftui-shimmeringview.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A7BCA0A2CADD8B700FA5810 /* ShimmeringUiView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A7BCA092CADD8B700FA5810 /* XCRemoteSwiftPackageReference "swiftui-shimmeringview" */;
+			productName = ShimmeringUiView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3A7BC9F02CADD87500FA5810 /* Project object */;
 }

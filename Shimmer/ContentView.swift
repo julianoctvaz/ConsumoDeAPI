@@ -4,19 +4,42 @@
 //
 //  Created by Juliano on 02/10/24.
 //
+// Também chamado de Skeleton
 
 import SwiftUI
+import ShimmeringUiView
 
 struct ContentView: View {
+    
+    @State var isLoading: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.clear
+            HStack {
+                Image("burnoutinho")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                
+                Text("Hello")
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+                    .fontWidth(.expanded)
+                    .padding()
+            }
+            .shimmering(active: isLoading)
         }
-        .padding()
+        .ignoresSafeArea()
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isLoading = false
+            
+            }
+        }
+
     }
+    
 }
 
 #Preview {

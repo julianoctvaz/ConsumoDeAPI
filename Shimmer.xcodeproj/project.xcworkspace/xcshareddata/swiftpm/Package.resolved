@@ -1,0 +1,15 @@
+{
+  "originHash" : "be51ff487f9d1294cf96a4acce33ddbfe4c5e302f2536b96fc57ea0bbca85a05",
+  "pins" : [
+    {
+      "identity" : "swiftui-shimmeringview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ninise/swiftui-shimmeringview.git",
+      "state" : {
+        "revision" : "ff62cd49d996b9a59df6ce8d32fb6ad44ad6a2e6",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
