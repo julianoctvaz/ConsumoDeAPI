@@ -9,7 +9,7 @@
 import SwiftUI
 import ShimmeringUiView
 
-struct ContentView: View {
+struct TestShimmer: View {
     
     @State var isLoading: Bool = true
     
@@ -43,5 +43,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    TestShimmer()
 }

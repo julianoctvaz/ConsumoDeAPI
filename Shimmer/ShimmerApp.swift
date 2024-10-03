@@ -11,7 +11,9 @@ import SwiftUI
 struct ShimmerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            TestShimmer()
+            DecoderArrayDataView()
+//            DecoderSingleDataView()
         }
     }
 }
