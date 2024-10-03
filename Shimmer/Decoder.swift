@@ -7,10 +7,11 @@
 
 import Foundation
 import SwiftUI
+import ShimmeringUiView
 
 struct GroceryProduct: Codable {
     // o que é esse protocolo codable
-//    qual a diferenca para o decodable
+    //    qual a diferenca para o decodable
     var name: String
     //essas propriedade devem ser opcionais?
     var points: Int
@@ -44,20 +45,22 @@ let jsonArray = """
 
 struct DecoderTest: View {
     
+    
     let decoder = JSONDecoder()
-   @State var product: GroceryProduct?
+    @State var product: GroceryProduct?
     @State var products: [GroceryProduct?] = []
-
+    @State var isLoading: Bool = true
+    
     var body: some View {
         
-//        HStack {
-//            Button(action: {
-//                let product = try decoder.decode(GroceryProduct.self, from: json) // mas precisamos tentar capturar o erro que esta dando
-//                print(product.name) // Prints "Durian"
-//            }, label: {
-//                Text("Toque para decodificar")
-//            })
-//        }
+        //        HStack {
+        //            Button(action: {
+        //                let product = try decoder.decode(GroceryProduct.self, from: json) // mas precisamos tentar capturar o erro que esta dando
+        //                print(product.name) // Prints "Durian"
+        //            }, label: {
+        //                Text("Toque para decodificar")
+        //            })
+        //        }
         
         VStack {
             Button(action: {
@@ -77,11 +80,18 @@ struct DecoderTest: View {
             })
             
             Divider()
+            
             if let product = product {
                 VStack {
                     Text(product.name)
                     Text(String(product.points))
                     Text(product.description)
+                }
+                .shimmering(active: isLoading)
+                .onAppear() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        isLoading.toggle()
+                    })
                 }
             }
         }
