@@ -25,20 +25,6 @@ struct GroceryProduct: Codable, Identifiable {
       }
 }
 
-//extension Array where Element == GroceryProduct? {
-//    mutating func removeInvalidProducts() {
-//        self = self.compactMap { product in
-//            // Verifica se o produto é nulo ou tem todas as propriedades inválidas
-//            guard let product = product,
-//                  !(product.name?.isEmpty ?? true),
-//                  product.points != nil || !(product.description?.isEmpty ?? true) else {
-//                return nil // Filtra o produto se ele for nulo ou vazio
-//            }
-//            return product // Retorna o produto válido
-//        }
-//    }
-//}
-
 
 
 
