@@ -8,7 +8,6 @@
 
 let json = """
 {
-    "name": "Durian",
     "points": 600,
     "description": "A fruit with a distinctive scent."
 }
@@ -18,7 +17,7 @@ let json = """
 let jsonArray = """
 [
     {
-        "name": "Durian",
+        "name_product": "Durian",
         "points": 600,
         "description": "A fruit with a distinctive scent."
     },
@@ -35,24 +34,24 @@ let jsonArray = """
 let jsonArrayWithEmptyValues = """
 [
     {
-        "name": "Durian",
+        "name_product": "Durian",
         "points": 600,
         "description": "A fruit with a distinctive scent."
     },
     { 
     },
     {
-        "name": "Apple",
+        "name_product": "Apple",
         "points": 602,
         "description": "Sweet and lovable"
     },
     {
-        "name": "Lemon",
+        "name_product": "Lemon",
         "points": 603,
         "description": null
     },
     {
-        "name": "Strawberry",
+        "name_product": "Strawberry",
         "points": 604
     }
 ]
