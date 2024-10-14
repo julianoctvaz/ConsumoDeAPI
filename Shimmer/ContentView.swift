@@ -4,12 +4,11 @@
 //
 //  Created by Juliano on 02/10/24.
 //
-// Também chamado de Skeleton
 
 import SwiftUI
 import ShimmeringUiView
 
-struct TestShimmer: View {
+struct ContentView: View {
     
     @State var isLoading: Bool = true
     
@@ -43,5 +42,5 @@ struct TestShimmer: View {
 }
 
 #Preview {
-    TestShimmer()
+    ContentView()
 }
