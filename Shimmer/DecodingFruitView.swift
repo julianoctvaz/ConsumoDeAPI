@@ -12,6 +12,7 @@ struct DecodingFruitView: View {
     // MARK: - Properties
     
     let decoder = JSONDecoder()
+    
     @State var product: Product?
     @State var isLoading: Bool = true
     
@@ -47,7 +48,23 @@ struct DecodingFruitView: View {
     
     fileprivate func requestData() {
         do {
+            
+            // Verifique se o Data está vazio //1
+            if json.isEmpty {
+                print("JSON está vazio")
+                return
+            }
+
+                //verifica se tem objeto vazio //2
+            if let jsonObject = try JSONSerialization.jsonObject(with: json) as? [String: Any], jsonObject.isEmpty {
+                print("JSON contém um objeto vazio")
+                //pode criar uma tela/variaveis de estado para colocar uma mensagem de erro na tela
+                return
+            }
+            
             product = try decoder.decode(Product.self, from: json)
+            
+            
             if let product = product {
                 if let name = product.name { print(name) }
                 if let points = product.points { print(points) }
