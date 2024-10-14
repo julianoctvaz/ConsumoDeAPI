@@ -7,7 +7,11 @@
 
 
 let json = """
-
+{
+    "name_product": "Durian",
+    "points": 600,
+    "description": "A fruit with a distinctive scent."
+}
 """.data(using: .utf8)!
 //precisamosa garantir que o dado será devolvido, pois esse retorno é do tipo Data?
 
