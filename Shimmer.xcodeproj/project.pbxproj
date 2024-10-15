@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A7BCA0B2CADD8B700FA5810 /* ShimmeringUiView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7BCA0A2CADD8B700FA5810 /* ShimmeringUiView */; };
-		3AE5F7072CBDE7E50010B18F /* Teste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5F7062CBDE7E30010B18F /* Teste.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A7BC9F82CADD87600FA5810 /* Shimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AE5F7062CBDE7E30010B18F /* Teste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teste.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,7 +37,6 @@
 		3A7BC9EF2CADD87500FA5810 = {
 			isa = PBXGroup;
 			children = (
-				3AE5F7062CBDE7E30010B18F /* Teste.swift */,
 				3A7BC9FA2CADD87600FA5810 /* Shimmer */,
 				3A7BC9F92CADD87600FA5810 /* Products */,
 			);
@@ -131,7 +128,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE5F7072CBDE7E50010B18F /* Teste.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

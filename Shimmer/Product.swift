@@ -7,6 +7,8 @@
 
 import Foundation
 
+//Codable = Encodable + Decodable
+
 struct Product: Codable, Hashable {
 //struct Product: Codable, Identifiable {
     
