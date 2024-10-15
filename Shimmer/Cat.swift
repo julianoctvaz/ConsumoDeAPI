@@ -8,7 +8,7 @@ import Foundation
 
 //Codable = Encodable + Decodable
 
-struct Cat: Codable {
+struct Cat: Codable { //Model //Reponse
     let data: [String]
 }
 
