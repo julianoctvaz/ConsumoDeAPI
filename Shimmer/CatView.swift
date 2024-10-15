@@ -23,9 +23,9 @@ public struct CatView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                                isLoading = false // para terminar shimmer
                                if let cat = cat {
-                                   catFact = cat.data.first // assumindo que `Cat` tem uma propriedade `fact`
+                                   catFact = cat.data.first 
                                } else {
-                                   catFact = "Erro ao carregar o fato"
+                                   print(error?.localizedDescription ?? "Erro ao carregar o fato")
                                }
                            }
                         }
