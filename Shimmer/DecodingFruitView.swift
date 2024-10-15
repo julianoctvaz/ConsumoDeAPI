@@ -2,7 +2,7 @@
 //  DecodingFruitView.swift
 //  Shimmer
 //
-//  Created by Juliano on 14/10/24.
+//  Created by Juliano on 03/10/24.
 //
 
 import SwiftUI
@@ -56,7 +56,7 @@ struct DecodingFruitView: View {
             }
 
                 //verifica se tem objeto vazio //2
-            if let jsonObject = try JSONSerialization.jsonObject(with: json) as? [String: Any], jsonObject.isEmpty {
+            if let jsonRecebido = try JSONSerialization.jsonObject(with: json) as? [String: Any], jsonRecebido.isEmpty {
                 print("JSON contém um objeto vazio")
                 //pode criar uma tela/variaveis de estado para colocar uma mensagem de erro na tela
                 return
@@ -72,6 +72,9 @@ struct DecodingFruitView: View {
             }
         } catch {
             print("Não consegui decodificar e o erro foi " + error.localizedDescription)
+            if let jsonString = String(data: json, encoding: .utf8) {
+                print("JSON recebido: \(jsonString)")
+            }
         }
     }
 }

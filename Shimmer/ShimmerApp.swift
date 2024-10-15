@@ -12,8 +12,9 @@ struct ShimmerApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            DecodingFruitView()
-//            DecoderSingleDataView()
+//            DecodingFruitView()
+            DecodingFruitArrayView()
+//            DecodingFruitArrayViewAndEmptyValues()
         }
     }
 }

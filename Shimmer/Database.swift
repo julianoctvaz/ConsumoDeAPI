@@ -23,7 +23,7 @@ let jsonArray = """
         "description": "A fruit with a distinctive scent."
     },
     {
-        "name": "Apple",
+        "name_product": "Apple",
         "points": 602
     }
 ]
