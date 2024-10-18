@@ -13,8 +13,11 @@ struct ShimmerApp: App {
         WindowGroup {
 //            ContentView()
 //            DecodingFruitView()
-            DecodingFruitArrayView()
+//            DecodingFruitArrayView()
 //            DecodingFruitArrayViewAndEmptyValues()
+//            CatView()
+//            MoviesView()
+            MoviesView2()
         }
     }
 }
