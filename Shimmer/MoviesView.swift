@@ -19,7 +19,7 @@ public struct MoviesView2: View {
         Button(
             action: {
                 isLoading = true // para iniciar o shimmer
-                MovieService().searchMovies(withTitle: "Michael Jackson") { moviesList in
+                MovieService().searchMovies(withTitle: "Steve Jobs") { moviesList in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         isLoading = false // para terminar shimmer
                         movies = moviesList
@@ -47,9 +47,14 @@ public struct MoviesView2: View {
                     Image(systemName: "film.fill")
                     Text("Chameow a requisição")
                 }
+                .padding() // Adicionar um padding para que o conteúdo tenha espaço interno
+                .background(Color(red: 0.447, green: 0.184, blue: 0.216))
+                .foregroundStyle(.white)
+                .cornerRadius(10)
             }
         ) // fim botao
-        .buttonStyle(.borderedProminent)
+//        .buttonStyle(.bordered)
+//        .background(.red)
         
         Divider()
         
@@ -91,7 +96,7 @@ public struct MoviesView2: View {
                             }
                             .frame(maxWidth: 250, alignment: .leading)
                             .padding()
-                            .background(Color.blue.opacity(0.1))
+                            .background(Color(red: 0.447, green: 0.184, blue: 0.216).opacity(0.1))
                             .cornerRadius(8)
                         }
                     }
