@@ -5,6 +5,8 @@
 //  Created by Juliano on 03/10/24.
 //
 
+import Foundation
+
 //The data couldn’t be read because it isn’t in the correct format.
 
 //
@@ -44,7 +46,7 @@ enum ServiceError: Error {
             return "Unknown error occurred"
         }
     }
- 
+    
     static func mapDecodingError(_ error: DecodingError) -> String {
         switch error {
         case .typeMismatch(let type, let context):
@@ -64,3 +66,36 @@ enum ServiceError: Error {
 
 }
 
+//do {
+//    // Código que pode gerar um erro
+//    try someThrowingFunction()
+//} catch let error as URLError {
+//    print("URLError occurred: \(error)")
+//} catch let error as DecodingError {
+//    print("DecodingError occurred: \(error)")
+//} catch let error as NSError {
+//    // Para capturar erros genéricos no estilo NSError (Objective-C)
+//    print("NSError occurred: \(error.localizedDescription) (\(error.code))")
+//} catch {
+//    // Para capturar erros desconhecidos
+//    print("An unknown error occurred: \(error.localizedDescription)")
+//}
+
+
+//let result: Result<Data, Error> = someFunctionReturningResult()
+//
+//switch result {
+//case .success(let data):
+//    print("Data received: \(data)")
+//case .failure(let error):
+//    if let urlError = error as? URLError {
+//        print("URLError occurred: \(urlError)")
+//    } else if let decodingError = error as? DecodingError {
+//        print("DecodingError occurred: \(decodingError)")
+//    } else if let nsError = error as? NSError {
+//        print("NSError occurred: \(nsError.localizedDescription) (\(nsError.code))")
+//    } else {
+//        // Tratamento para erro desconhecido
+//        print("An unknown error occurred: \(error.localizedDescription)")
+//    }
+//}
