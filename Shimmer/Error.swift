@@ -99,3 +99,25 @@ enum ServiceError: Error {
 //        print("An unknown error occurred: \(error.localizedDescription)")
 //    }
 //}
+
+
+//enum APIError: Error {
+//    case badRequest    // 400
+//    case unauthorized  // 401
+//    case forbidden     // 403
+//    case notFound      // 404
+//    case serverError   // 500
+//    case unknown       // Undefined error
+//
+//    init(statusCode: Int) {
+//        switch statusCode {
+//        case 400: self = .badRequest
+//        case 401: self = .unauthorized
+//        case 403: self = .forbidden
+//        case 404: self = .notFound
+//        case 500: self = .serverError
+//        default: self = .unknown
+//        }
+//    }
+//}
+// Em Swift, try é usado para chamadas de funções que podem lançar erros
