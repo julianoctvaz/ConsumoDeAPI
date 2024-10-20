@@ -16,27 +16,30 @@
 
 
 enum ServiceError: Error {
-    case networkError(String)    
-    case decodingError(String)
-    case invalidResponse(String)
-    case invalidData(String)
-    case invalidURL(String)
+    case networkError
+    case decodingError
+    case invalidResponse
+    case invalidData
+    case noData
+    case invalidURL
     case unknownError
     //N ão seria apropriado usar @unknown default diretamente aqui nesse enem pq o atributo @unknown default é usado exclusivamente em um switch statement para tratar de casos futuros desconhecidos em enums, não dentro da definição do enum
     
     //Não está sendo usado
     var description: String {
         switch self {
-        case .networkError(let message):
-            return "Network error: \(message)"
-        case .decodingError(let message):
-            return "Decoding error: \(message)"
-        case .invalidResponse(let message):
-            return "Invalid response: \(message)"
-        case .invalidData(let message):
-            return "Invalid data: \(message)"
-        case .invalidURL(let message):
-            return "Invalid URL: \(message)"
+        case .networkError:
+            return "Network error!"
+        case .decodingError:
+            return "Decoding error"
+        case .invalidResponse:
+            return "Invalid response"
+        case .invalidData:
+            return "Invalid data"
+        case .noData:
+            return "No data"
+        case .invalidURL:
+            return "Invalid URL"
         case .unknownError:
             return "Unknown error occurred"
         }
