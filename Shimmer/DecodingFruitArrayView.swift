@@ -95,7 +95,7 @@ struct DecodingFruitArrayView: View {
                 }
             }
             
-            products = try decoder.decode([Product].self, from: jsonArray)
+            products = try decoder.decode([Product].self, from: jsonArrayWithEmptyValues)
             
             if let products = products {
                 
@@ -114,13 +114,13 @@ struct DecodingFruitArrayView: View {
             }
         } catch {
             print("Não consegui decodificar e o erro foi " + error.localizedDescription)
-            if let jsonString = String(data: jsonArray, encoding: .utf8) {
+            if let jsonString = String(data: jsonArrayWithEmptyValues, encoding: .utf8) {
                 print("JSON recebido: \(jsonString)")
             }
         } // fim catch
     }
     
-    fileprivate func hasValidProperties(_ product: Product?) -> Bool {
+    private func hasValidProperties(_ product: Product?) -> Bool {
         guard let product = product else { return false }
         return product.name != nil || product.points != nil || product.description != nil
     }

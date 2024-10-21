@@ -7,7 +7,7 @@
 
 import Foundation
 
-//The data couldn’t be read because it isn’t in the correct format.
+// Ao inves do protocolo Error, podemos criar nosso proprio enum que trata os cenarios de erro!
 
 //
 //Para resolver o problema, sugiro que:

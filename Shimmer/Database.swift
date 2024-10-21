@@ -15,6 +15,7 @@ let json = """
 """.data(using: .utf8)!
 //precisamosa garantir que o dado será devolvido, pois esse retorno é do tipo Data?
 
+//Desafio 1
 let jsonArray = """
 [
     {
@@ -32,6 +33,7 @@ let jsonArray = """
 
 // { } nao é nulo, é um caso vazio! entao é preciso tratar tambem
 
+//Desafio 2
 let jsonArrayWithEmptyValues = """
 [
     {

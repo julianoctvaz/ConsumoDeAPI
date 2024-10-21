@@ -46,7 +46,7 @@ struct DecodingFruitView: View {
     
     // MARK: - Functions
     
-    fileprivate func requestData() {
+    private func requestData() {
         do {
             
             // Verifique se o Data está vazio //1

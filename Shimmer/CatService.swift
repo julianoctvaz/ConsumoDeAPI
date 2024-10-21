@@ -105,13 +105,5 @@ class CatService {
     }
     
     
-    
-    //chama esse codigo assim que a requisicao for completada
-//    enum Result {
-//        case success([Cat])
-//        case failure(Swift.Error)
-//    }
-    
-    
 
 }

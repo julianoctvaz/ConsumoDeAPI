@@ -11,7 +11,8 @@ import ShimmeringUiView
 public struct MoviesView2: View {
     
     @State private var isLoading: Bool = false
-    @State private var movies: [Movie]?
+    @State private
+    var movies: [Movie]?
     @State private var imagesOfMovies: [Data?] = [] // Array para armazenar os dados das imagens dos filmes
     
     public var body: some View {
@@ -19,7 +20,7 @@ public struct MoviesView2: View {
         Button(
             action: {
                 isLoading = true // para iniciar o shimmer
-                MovieService().searchMovies(withTitle: "Steve Jobs") { moviesList in
+                MovieService().searchMovies(withTitle: "Michael Jackson") { moviesList in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         isLoading = false // para terminar shimmer
                         movies = moviesList
@@ -102,7 +103,7 @@ public struct MoviesView2: View {
                     }
                 }
             }
-        } // fim VStack
+        } // fim VStac3k
         .shimmering(active: isLoading)
     }
 }
