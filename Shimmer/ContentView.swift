@@ -13,7 +13,7 @@ struct ContentView: View {
     
     @State var isLoading: Bool = true
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             Color.clear
             HStack {
@@ -22,7 +22,7 @@ struct ContentView: View {
                     .scaledToFit()
                     .padding()
                 
-                Text("Hello")
+                Text("burnoutinho não é seu amiguinho!")
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
                     .fontWidth(.expanded)
@@ -37,9 +37,7 @@ struct ContentView: View {
             
             }
         }
-
     }
-    
 }
 
 #Preview {

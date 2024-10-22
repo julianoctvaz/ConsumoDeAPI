@@ -57,7 +57,7 @@ public struct CatView: View {
                
    }
     
-    fileprivate func requestData() {
+    private func requestData() {
         isLoading = true // para iniciar o shimmer
             CatService.getRandomFact { cat, error in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2){ //sempre mudamos nossa ui dentro da thread principal

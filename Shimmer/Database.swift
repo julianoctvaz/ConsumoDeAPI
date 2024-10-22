@@ -13,7 +13,7 @@ let json = """
     "description": "A fruit with a distinctive scent."
 }
 """.data(using: .utf8)!
-//precisamosa garantir que o dado será devolvido, pois esse retorno é do tipo Data?
+//precisamos garantir que o dado será devolvido, pois esse retorno é do tipo -> Data?
 
 //Desafio 1
 let jsonArray = """

@@ -10,7 +10,7 @@ import Foundation
 //Codable = Encodable + Decodable
 
 struct Product: Codable, Hashable {
-//struct Product: Codable, Identifiable {
+//struct Product: Codable, Identifiable { //testar foreach com Id e sem self via protocolo Identifiable
     
 //    public var id: UUID = UUID()
     public var name: String?

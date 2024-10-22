@@ -19,7 +19,7 @@ struct DecodingFruitView: View {
     
     // MARK: - UI
     
-    var body: some View {
+    public var body: some View {
         
         Button(action: {
             requestData()
