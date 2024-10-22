@@ -1,5 +1,5 @@
 //
-// MoviesView.swift
+// MoviesViewOnlyTitle.swift
 //  Shimmer
 //
 //  Created by Juliano on 14/10/24.
@@ -9,7 +9,7 @@
 import SwiftUI
 import ShimmeringUiView
 
-public struct MoviesView: View {
+public struct MoviesViewOnlyTitle: View {
     
     @State private var isLoading: Bool = false
     @State private var movies: [Movie]?
@@ -88,5 +88,5 @@ public struct MoviesView: View {
 }
 
 #Preview {
-    MoviesView()
+    MoviesViewOnlyTitle()
 }

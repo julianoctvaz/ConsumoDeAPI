@@ -1,5 +1,5 @@
 //
-//  MoviesView.swift
+//  MoviesViewWithImage.swift
 //  Shimmer
 //
 //  Created by Juliano on 15/10/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ShimmeringUiView
 
-public struct MoviesView2: View {
+public struct MoviesViewWithImage: View {
     
     @State private var isLoading: Bool = false
     @State private var movies: [Movie]?
@@ -131,6 +131,6 @@ public struct MoviesView2: View {
 }
 
 #Preview {
-    MoviesView2()
+    MoviesViewWithImage()
 }
 

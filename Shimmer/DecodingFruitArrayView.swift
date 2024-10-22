@@ -74,14 +74,14 @@ struct DecodingFruitArrayView: View {
         do {
             
             // Verifique se o Data está vazio  "" //1
-            if jsonArray.isEmpty {
+            if jsonArrayWithEmptyValues.isEmpty {
                 print("JSON está vazio")
                 // ""
                 return
             }
             
             //verifica se tem algum objeto vazio  (elemento) //2
-            if let jsonRecebido = try JSONSerialization.jsonObject(with: jsonArray) as? [[String: Any]] {
+            if let jsonRecebido = try JSONSerialization.jsonObject(with: jsonArrayWithEmptyValues) as? [[String: Any]] {
                 // Verifica se o array está vazio ou se contém objetos vazios
                 if jsonRecebido.isEmpty {
                     print("JSON contém um array vazio")

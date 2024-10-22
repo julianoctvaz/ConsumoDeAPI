@@ -14,11 +14,10 @@ struct ShimmerApp: App {
 //            ContentView()
 //            DecodingFruitView()
 //            DecodingFruitArrayView()
-//            DecodingFruitArrayViewAndEmptyValues()
 //            CatView()
-//            MoviesView()
-//            MoviesView2()
-            CatViewWithoutCompletions()
+//            MoviesViewOnlyTitle()
+            MoviesViewWithImage()
+//            CatViewWithoutCompletions()
         }
     }
 }
