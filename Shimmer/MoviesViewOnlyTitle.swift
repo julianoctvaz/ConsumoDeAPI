@@ -13,6 +13,7 @@ public struct MoviesView: View {
     
     @State private var isLoading: Bool = false
     @State private var movies: [Movie]?
+    @State private var serviceError: ServiceError?
     
     public var body: some View {
         
@@ -20,19 +21,19 @@ public struct MoviesView: View {
             //action botao
                 action: {
                     isLoading = true // para iniciar o shimmer
-                    MovieService().searchMovies(withTitle: "Steve Jobs") { moviesList in
+                    MovieService().searchMovies(withTitle: "Steve Jobs") { moviesList, error in
 //                            DispatchQueue.main.async { //mt rapido
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2){ //sempre mudamos nossa ui dentro da thread principal
-                               isLoading = false // para terminar shimmer
-//                               if let moviesList = moviesList { nao tem como dar erro!!!
-                                movies = moviesList
-//                               }
-//                                   else {
-//                                   print(error?.localizedDescription ?? "Erro ao carregar o fato")
-//                               }
-                           }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){ //sempre mudamos nossa ui dentro da thread principal
+                            isLoading = false // para terminar shimmer
+                            if let error = error {
+                                // Trata o erro de serviço
+                                serviceError = error
+                                
+                            } else if let moviesList = moviesList {
+                                movies = moviesList //se deu tudo certo colocar dados em variavel
+                            }
                         }
-
+                    }
                 },
                 //label botao
                 label: {
@@ -47,7 +48,11 @@ public struct MoviesView: View {
         Divider()
         
         VStack (alignment: .leading) {
-            if isLoading {
+            if let error = serviceError {
+                Text("Erro: \(error.localizedDescription)")
+                    .foregroundColor(.red)
+                    .padding()
+            } else if isLoading {
                 HStack(alignment: .top, spacing: 4) {
                     //                    Image(systemName: "cat.fill")
                     //arrumar layout shimmer
@@ -73,8 +78,6 @@ public struct MoviesView: View {
                         .background(Color.green.opacity(0.1))
                         .cornerRadius(8)
                     }
-                    
-                    
                 }
             }
         } // fim VStack

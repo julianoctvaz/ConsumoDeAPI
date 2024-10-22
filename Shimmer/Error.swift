@@ -17,7 +17,7 @@ import Foundation
 //Adicione CodingKeys caso as chaves no JSON sejam diferentes.
 
 
-enum ServiceError: Error {
+enum ServiceError: Error, LocalizedError {
     case networkError
     case decodingError
     case invalidResponse
@@ -28,7 +28,7 @@ enum ServiceError: Error {
     //N ão seria apropriado usar @unknown default diretamente aqui nesse enem pq o atributo @unknown default é usado exclusivamente em um switch statement para tratar de casos futuros desconhecidos em enums, não dentro da definição do enum
     
     //Não está sendo usado
-    var description: String {
+    var errorDescription: String? {
         switch self {
         case .networkError:
             return "Network error!"

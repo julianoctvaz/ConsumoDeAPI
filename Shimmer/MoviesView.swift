@@ -11,37 +11,15 @@ import ShimmeringUiView
 public struct MoviesView2: View {
     
     @State private var isLoading: Bool = false
-    @State private
-    var movies: [Movie]?
+    @State private var movies: [Movie]?
     @State private var imagesOfMovies: [Data?] = [] // Array para armazenar os dados das imagens dos filmes
+    @State private var serviceError: ServiceError? 
     
     public var body: some View {
         
         Button(
             action: {
-                isLoading = true // para iniciar o shimmer
-                MovieService().searchMovies(withTitle: "Michael Jackson") { moviesList in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        isLoading = false // para terminar shimmer
-                        movies = moviesList
-                        imagesOfMovies = Array(repeating: nil, count: moviesList.count) // inicializa o array de imagens
-                        
-                        // Carrega as imagens para cada filme
-                
-                            for (index, movie) in moviesList.enumerated() {
-                                if let posterURL = movie.posterURL {
-                                    MovieService().loadImageData(fromURL: posterURL) { imageData in
-                                        DispatchQueue.main.async {
-                                            if index < imagesOfMovies.count {
-                                                imagesOfMovies[index] = imageData
-                                            }
-                                        }
-                                    }
-//                                }
-                            }
-                        }
-                    }
-                }
+                requestData()
             },
             label: {
                 HStack(alignment: .top, spacing: 4) {
@@ -54,13 +32,15 @@ public struct MoviesView2: View {
                 .cornerRadius(10)
             }
         ) // fim botao
-//        .buttonStyle(.bordered)
-//        .background(.red)
         
         Divider()
         
         VStack(alignment: .leading) {
-            if isLoading {
+            if let error = serviceError {
+                Text("Erro: \(error.localizedDescription)")
+                    .foregroundColor(.red)
+                    .padding()
+            } else if isLoading {
                 HStack(alignment: .top, spacing: 4) {
                     Image(systemName: "photo") // Placeholder enquanto a imagem carrega
                         .resizable()
@@ -105,6 +85,48 @@ public struct MoviesView2: View {
             }
         } // fim VStac3k
         .shimmering(active: isLoading)
+    }
+    
+    private func requestData() {
+        isLoading = true // Inicia o shimmer
+        
+        // Busca filmes
+        MovieService().searchMovies(withTitle: "Michael Jackson") { moviesList, error in
+            // Aguarda o delay para o shimmer
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                isLoading = false // Finaliza o shimmer
+                
+                if let error = error {
+                    // Trata o erro de serviço
+                    serviceError = error
+                } else if let moviesList = moviesList {
+                    // Atualiza os filmes e inicia o array de imagens
+                    movies = moviesList
+                    imagesOfMovies = Array(repeating: nil, count: moviesList.count)
+                    
+                    // Carrega as imagens para cada filme
+                    for (index, movie) in moviesList.enumerated() {
+                        if let posterURL = movie.posterURL {
+                            // Carrega a imagem
+                            MovieService().loadImageData(fromURL: posterURL) { imageData, imageError in
+                                
+                                if let imageError = imageError {
+                                    // Trata o erro de imagem
+                                    serviceError = imageError
+                                } else if let imageData = imageData {
+                                    // Atualiza a imagem no array
+                                    DispatchQueue.main.async {
+                                        if index < imagesOfMovies.count {
+                                            imagesOfMovies[index] = imageData
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

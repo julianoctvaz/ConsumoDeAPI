@@ -19,12 +19,12 @@ struct MovieService {
     
     private let decoder = JSONDecoder()
     
-    func searchMovies(withTitle title: String, completion: @escaping ([Movie]) -> Void) {
+    func searchMovies(withTitle title: String, completion: @escaping ([Movie]?, ServiceError?) -> Void) {
         let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpoint = apiURL + "&s=\(query)"
         
         guard let url = URL(string: endpoint) else {
-            completion([])
+            completion(nil, .invalidURL)
             return
         }
         
@@ -33,32 +33,32 @@ struct MovieService {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data,
                     error == nil else {
-                completion([])
+                completion(nil, .invalidData)
                 return
             }
             
             do {
                 let movieResponse = try decoder.decode(Movies.self, from: data)
                 let movies = movieResponse.search
-                completion(movies)
+                completion(movies, nil)
             } catch {
                 print("FETCH ALL MOVIES ERROR: \(error)")
                 if let jsonString = String(data: data, encoding: .utf8) {
                     print("JSON recebido: \(jsonString)")
                 }
-                completion([])
+                completion(nil, .decodingError)
             }
         }
         
         task.resume()
     }
     
-    func searchMovie(withId movieId: String, completion: @escaping (Movie?) -> Void) {
+    func searchMovie(withId movieId: String, completion: @escaping (Movie?, ServiceError?) -> Void) {
         let query = movieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpoint = apiURL + "&i=\(query)"
         
         guard let url = URL(string: endpoint) else {
-            completion(nil)
+            completion(nil, .invalidURL)
             return
         }
         
@@ -66,32 +66,32 @@ struct MovieService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                completion(nil)
+                completion(nil, .invalidData)
                 return
             }
             
             do {
                 let movie = try decoder.decode(Movie.self, from: data)
-                completion(movie)
+                completion(movie, nil)
             } catch {
                 print("FETCH MOVIE ERROR: \(error)")
-                completion(nil)
+                completion(nil, .decodingError)
             }
         }
         
         task.resume()
     }
     
-    func loadImageData(fromURL link: String, completion: @escaping (Data?) -> Void) {
+    func loadImageData(fromURL link: String, completion: @escaping (Data?, ServiceError?) -> Void) {
         guard let url = URL(string: link) else {
-            completion(nil)
+            completion(nil, .invalidURL)
             return
         }
         
         let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completion(data)
+            completion(data, nil)
         }
         
         task.resume()
