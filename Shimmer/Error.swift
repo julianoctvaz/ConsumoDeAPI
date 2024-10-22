@@ -47,6 +47,7 @@ enum ServiceError: Error, LocalizedError {
         }
     }
     
+    //Pode usar essa funcao para tratar os tipos de erro do tipo DecodingError mais especificamente, ele é tratado como enum
     static func mapDecodingError(_ error: DecodingError) -> String {
         switch error {
         case .typeMismatch(let type, let context):
