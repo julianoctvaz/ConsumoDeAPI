@@ -61,18 +61,32 @@ public struct MoviesViewWithImage: View {
                     VStack(alignment: .center, spacing: 10) {
                         ForEach(movies.indices, id: \.self) { index in
                             HStack(alignment: .top, spacing: 4) {
-                                if let imageData = imagesOfMovies[index], let uiImage = UIImage(data: imageData) {
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .frame(width: 50, height: 75) // ajuste de tamanho conforme necessário
-                                        .cornerRadius(4)
-                                } else {
-                                    Image(systemName: "photo") // Placeholder enquanto a imagem carrega
-                                        .resizable()
-                                        .frame(width: 50, height: 75)
-                                        .foregroundColor(.gray)
-                                        .cornerRadius(4)
+                                if let posterURLString = movies[index].posterURL, let posterURL = URL(string: posterURLString) {
+                                    AsyncImage(url: posterURL) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            Image(systemName: "photo") // Placeholder enquanto a imagem carrega
+                                                .resizable()
+                                                .frame(width: 50, height: 75)
+                                                .foregroundColor(.gray)
+                                                .cornerRadius(4)
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .frame(width: 50, height: 75)
+                                                .cornerRadius(4)
+                                        case .failure:
+                                            Image(systemName: "xmark.octagon") // Placeholder em caso de erro
+                                                .resizable()
+                                                .frame(width: 50, height: 75)
+                                                .foregroundColor(.red)
+                                                .cornerRadius(4)
+                                        @unknown default:
+                                            EmptyView()
+                                        }
+                                    }
                                 }
+                                
                                 Text(movies[index].title)
                             }
                             .frame(maxWidth: 250, alignment: .leading)
